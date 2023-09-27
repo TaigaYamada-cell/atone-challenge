@@ -1,0 +1,9 @@
+<h1>atoneの試練</h1>
+<%=@message %>
+<%= form_tag('/', method: :post) do %>
+  <%= text_field_tag :porker %>
+  <%= submit_tag "送信" %>
+<% end %>
+<% if @result != nil then %>
+  <%= @result %>
+<% end %>

@@ -5,5 +5,10 @@ class API < Grape::API
     get '/hello' do
       {hello: "world"}
     end
+
+    post '/judge' do
+      message = params[:]
+      {hello: "world"}
+    end
   end
 end

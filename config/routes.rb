@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'top/index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -55,5 +57,6 @@ Rails.application.routes.draw do
   #   end
 
   mount API => "/api"
-
+  get "", to: "top#index"
+  post "", to: "top#judge"
 end
