@@ -1,3 +1,7 @@
+require 'json'
+# todo:カレントディレクトリを設定
+require '/Users/t.yamada/rails-project/atone-test/app/service/judge_service.rb'
+
 class API < Grape::API
   format :json
  
@@ -7,8 +11,9 @@ class API < Grape::API
     end
 
     post '/judge' do
-      message = params[:]
-      {hello: "world"}
+      # jsonを受け取る
+      result = judge_hand(params[:cards])
+      {result: result}
     end
   end
 end

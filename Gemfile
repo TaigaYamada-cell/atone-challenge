@@ -26,6 +26,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'grape'
 gem 'rabl'
 gem 'httpclient'
+
+group :test do
+  gem 'capybara', '>= 2.15'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'faker'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
