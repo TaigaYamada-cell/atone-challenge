@@ -1,11 +1,11 @@
 module Constants
-  STRAIGHT_FLUSH = 1
-  FOUR_OF_A_KIND = 2
-  FULL_HOUSE = 3
-  FLUSH = 4
-  STRAIGHT = 5
-  THREE_OF_A_KIND = 6
-  TWO_PAIR = 7
-  ONE_PAIR = 8
-  HIGH_CARD = 9
+  STRAIGHT_FLUSH = "ストレートフラッシュ"
+  FOUR_OF_A_KIND = "フォー・オブ・ア・カインド"
+  FULL_HOUSE = "フルハウス"
+  FLUSH = "フラッシュ"
+  STRAIGHT = "ストレート"
+  THREE_OF_A_KIND = "スリー・オブ・ア・カインド"
+  ONE_PAIR = "ワンペア"
+  TWO_PAIR = "ツーペア"
+  HIGH_CARD = "ハイカード"
 end

@@ -12,7 +12,7 @@ class API < Grape::API
 
     post '/judge' do
       # jsonを受け取る
-      result = judge_hand(params[:cards])
+      result = judge_hand(params[:params][:cards])
       {result: result}
     end
   end

@@ -14,6 +14,9 @@ end
 
 # 役を判定して結果を返す
 def judge_hand(cards)
+  # cardsを配列に変換
+  cards = cards.split()
+
   hand = nil
 
   # これどうにかならんか。いけてないのはわかる
