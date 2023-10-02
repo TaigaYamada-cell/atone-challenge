@@ -21,7 +21,6 @@ describe "porker judge api", :type => :request do
         print(json)
         expect(json["result"]).to include("ストレートフラッシュ")
       end
-
     end
   end
 end

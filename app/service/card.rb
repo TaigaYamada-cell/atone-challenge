@@ -23,10 +23,19 @@ class Card
     # 文字列をsuitとnumに分割する
     @suit = str
     @num = num
+    # ポーカー内でのnumの実質的な数字の強さ
     @relative_value = self.calc_relative_value(@num)
   end
 
   def to_s
     @suit + @num.to_s
+  end
+
+  def get_suit
+    @suit
+  end
+
+  def get_num
+    @num
   end
 end

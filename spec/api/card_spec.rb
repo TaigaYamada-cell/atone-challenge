@@ -1,5 +1,5 @@
 require_relative "../../app/service/card"
-
+  
 describe Card do
   it "1以外のときrelative_valueを正しく返すこと" do
     expect(Card.calc_relative_value(2)).to eq 1

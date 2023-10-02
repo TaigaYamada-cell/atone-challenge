@@ -131,8 +131,12 @@ GEM
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    pry-rails (0.3.9)
-      pry (>= 0.10.4)
+    pry-byebug (3.8.0)
+      byebug (~> 11.0)
+      pry (~> 0.10)
+    pry-doc (1.4.0)
+      pry (~> 0.11)
+      yard (~> 0.9.11)
     public_suffix (4.0.7)
     rabl (0.16.1)
       activesupport (>= 2.3.14)
@@ -229,6 +233,7 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yard (0.9.34)
 
 PLATFORMS
   ruby
@@ -244,7 +249,9 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   loofah (~> 2.19.1)
-  pry-rails
+  pry
+  pry-byebug
+  pry-doc
   rabl
   rails (= 4.2.11.3)
   rspec-rails
