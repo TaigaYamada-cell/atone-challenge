@@ -19,7 +19,7 @@ class Hand
     @hand
   end
 
-  private
+  # テストで使うのでpublic
   def judge(cards)
     # cardsの役を定数で返す
     hand = nil
@@ -56,6 +56,7 @@ class Hand
     end
   end
 
+  private
   # suitが同じかどうかを真偽値で返す
   def is_suit_same?
     first_suit = @cards[0].get_suit

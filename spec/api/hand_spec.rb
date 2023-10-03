@@ -219,5 +219,21 @@ describe Hand do
         expect(@hand2.judge(@cards2)).to eq Constants::HIGH_CARD
       end
     end
+
+    context "12345のストレートフラッシュが成立している手札" do
+      before do
+        card1 = Card.new("C1")
+        card2 = Card.new("C2")
+        card3 = Card.new("C3")
+        card4 = Card.new("C4")
+        card5 = Card.new("C5")
+        @cards1 = [card1, card2, card3, card4, card5]
+        @hand1 = Hand.new(@cards1)
+      end
+
+      it "ストレートフラッシュと判定" do
+        expect(@hand1.judge(@cards1)).to eq Constants::STRAIGHT_FLUSH
+      end
+    end
   end
 end
