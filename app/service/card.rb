@@ -24,7 +24,7 @@ class Card
     @suit = str
     @num = num
     # ポーカー内でのnumの実質的な数字の強さ
-    @relative_value = self.calc_relative_value(@num)
+    @relative_value = calc_relative_value(@num)
   end
 
   def to_s
@@ -37,5 +37,9 @@ class Card
 
   def get_num
     @num
+  end
+
+  def get_relative_value
+    @relative_value
   end
 end

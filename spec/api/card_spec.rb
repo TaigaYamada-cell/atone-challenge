@@ -1,6 +1,8 @@
 require_relative "../../app/service/card"
   
 describe Card do
+  # staticメソッドではなくしたので、通らない
+  # todo:calc_relative_valueのテスト方法を修正すること
   it "1以外のときrelative_valueを正しく返すこと" do
     expect(Card.calc_relative_value(2)).to eq 1
     expect(Card.calc_relative_value(3)).to eq 2
