@@ -2,6 +2,24 @@ require "./config/initializers/constants.rb"
 require "pry"
 
 class Hand
+  def initialize(cards)
+    @cards = cards
+    @hand = judge(cards)
+  end
+
+  def get_cards
+    @cards
+  end
+
+  def get_hand
+    @hand
+  end
+
+  def to_s 
+    @hand
+  end
+
+  private
   def judge(cards)
     # cardsの役を定数で返す
     hand = nil
@@ -36,21 +54,6 @@ class Hand
     else
       return Constants::HIGH_CARD
     end
-  end
-
-
-  def initialize(cards)
-    @cards = cards
-    # HandCardクラスのjudge_hand()でこの中から最強を求める
-    @hands = judge(cards)
-  end
-
-  def get_cards
-    @cards
-  end
-
-  def to_s 
-    @hands
   end
 
   # suitが同じかどうかを真偽値で返す
