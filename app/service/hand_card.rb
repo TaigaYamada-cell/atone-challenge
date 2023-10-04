@@ -1,6 +1,8 @@
+require "json"
+
 class HandCard
-  def initialize(cards)
-    @cards = create_cards(cards)
+  def initialize(request)
+    @cards = create_cards(request)
     @hand = judge_hand(@cards)
   end
 
@@ -8,12 +10,23 @@ class HandCard
     @cards
   end
 
+  def get_cards_str
+    cards_str = []
+    for card in @cards do
+      card_num_str = card.get_num.to_s
+      card_suit_str = card.get_suit
+      card_str = card_suit_str + card_num_str
+      cards_str.push(card_str)
+    end
+    return cards_str
+  end
+
   def get_hand
     @hand
   end
 
   def to_s
-    "あなたの手札の#{@cards}は#{@hand}の役が成立します"
+    "あなたの手札は#{@hand}の役が成立します"
   end
 
   private
@@ -42,10 +55,12 @@ class HandCard
       relative_values.push(card.get_relative_value)
     end
     relative_values.sort!
+    relative_values = relative_values.uniq
 
     i = 0
+    n = relative_values.length
     sort_cards = []
-    while i < 6 do
+    while i < n do
       for card in cards do
         if(relative_values[i] == card.get_relative_value)
           sort_cards.push(card)

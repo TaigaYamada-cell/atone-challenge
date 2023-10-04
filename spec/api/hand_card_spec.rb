@@ -17,6 +17,18 @@ describe HandCard do
       expect(@hand_card2.get_hand).to eq Constants::STRAIGHT_FLUSH
       expect(@hand_card3.get_hand).to eq Constants::FOUR_OF_A_KIND
     end
+  end
+
+  # カード並べ替えメソッドのテスト
+  context "#sort_cards" do
+    before do
+      @hand_card1 = HandCard.new("H2 C3 H4 C5 H3")
+    end
+    
+    it "@cardsが昇順で並べ替えられる" do
+      expect(@hand_card1.get_cards_str).to eq ["H2", "C3", "H3", "H4", "C5"]
+    end
+  end
 
   context "期待しない引数でインスタンス化した時" do
     it "例外処理が出されること" do
@@ -28,6 +40,5 @@ describe HandCard do
       expect { Card.new("C0 C11 C14 C87 H32") }.to raise_error(ArgumentError)
       expect { Card.new("H134 C22 C12 C87 C2777") }.to raise_error(ArgumentError)
     end
-  end
   end
 end
