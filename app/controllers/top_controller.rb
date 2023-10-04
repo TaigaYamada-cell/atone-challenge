@@ -4,9 +4,9 @@ class TopController < ApplicationController
     render template:"top/index"
   end
 
-  def judge
-    data = params[:porker]
-    # serviceにデータを渡す
-    @result = JudgeService.new.judge(data)
-  end
+  # def judge
+  #   data = params[:porker]
+  #   # serviceにデータを渡す
+  #   @result = JudgeService.new.judge(data)
+  # end
 end
