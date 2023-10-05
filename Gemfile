@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'grape'
 gem 'rabl'
 gem 'httpclient'
+gem 'puma'
 
 group :test do
   gem 'capybara', '>= 2.15'
