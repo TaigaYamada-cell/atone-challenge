@@ -8,10 +8,16 @@ class TopController < ApplicationController
 
   def judge
     data = params[:porker]
-    # serviceにデータを渡す
+    begin
+      res = JudgeService.new.judge(data)
+    rescue => e
+      @message = "エラー！入力されたカード文字列が不正です！"
+      render template:"top/error"
+      return
+    end
     @message = "結果"
-    hand = JudgeService.new.judge(data)
-    @result = hand_to_str(hand)
+    @hand = hand_to_str(res[0])
+    @cards = res[1]
     render template:"top/index"
   end
 
