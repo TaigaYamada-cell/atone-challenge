@@ -26,6 +26,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'grape'
 gem 'rabl'
 gem 'httpclient'
+gem 'puma'
+
+group :test do
+  gem 'capybara', '>= 2.15'
+  gem 'pry',                                require: true
+  gem 'pry-byebug',                         require: true
+  gem 'pry-doc',                            require: true
+  gem 'rspec-rails',                        require: false
+  gem "factory_bot_rails"
+  gem 'faker'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
