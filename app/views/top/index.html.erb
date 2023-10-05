@@ -4,6 +4,9 @@
   <%= text_field_tag :porker %>
   <%= submit_tag "送信" %>
 <% end %>
-<% if @result != nil then %>
-  <%= @result %>
+<% if @hand != nil then %>
+  <p><%= @hand %></p>
+  <% for card in @cards do%>
+  <%= card %>
+  <% end %>
 <% end %>
