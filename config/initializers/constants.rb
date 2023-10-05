@@ -5,7 +5,7 @@ module Constants
   FLUSH = 4
   STRAIGHT = 5
   THREE_OF_A_KIND = 6
-  ONE_PAIR = 7
-  TWO_PAIR = 8
+  TWO_PAIR = 7
+  ONE_PAIR = 8
   HIGH_CARD = 9
 end
