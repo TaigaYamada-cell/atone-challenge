@@ -2,7 +2,9 @@ require 'rails_helper'
 
 URL = "/api/porker/judge"
 
-describe "porker judge api", :type => :request do
+# describe "porker judge api", :type => :request do
+describe 'POST /api/porker/judge' do
+  # rails sしてサーバーを起動してから実行する
   it "returns response" do
     post URL
     expect(response.status).to eq 201
