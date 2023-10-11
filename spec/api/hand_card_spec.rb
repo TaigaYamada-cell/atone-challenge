@@ -34,7 +34,7 @@ describe HandCard do
 
   context "期待しない引数でインスタンス化した時" do
     it "例外処理が出されること" do
-      # 窃盗時がスートを表さない
+      # 接頭時がスートを表さない
       expect { HandCard.new("f1 F2 F3 F3 F4") }.to raise_error(ArgumentError)
       expect { HandCard.new("O2 H1 H3 C5 D6") }.to raise_error(ArgumentError)
       expect { Card.new("h1 h3 h4 h5 h6") }.to raise_error(ArgumentError)
