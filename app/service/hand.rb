@@ -19,7 +19,6 @@ class Hand
     @hand
   end
 
-  # テストで使うのでpublic
   def judge(cards)
     # cardsの役を定数で返す
     hand = nil
@@ -78,7 +77,10 @@ class Hand
       if(i < 5)
         num = card.get_num + 1
         next_num = @cards[i].get_num
-        if(num != next_num)
+        # next_numがAでかつ4回目のループの時はストレートフラッシュが成立するのでループを抜ける
+        if(next_num == 1 && i == 4)
+          break
+        elsif(num != next_num)
           return Constants::FLUSH
         end
         i += 1

@@ -4,6 +4,8 @@ require_relative "../../app/service/hand_card"
 require "./config/initializers/constants.rb"
 require 'pry-byebug'
 
+# 前提：HandCardクラスによってHandクラスがインスタンス化される
+# その際、Cardインスタンスが５つ、昇順に並べ替えられ@cardsに格納される
 describe HandCard do
   context "期待する引数でインスタンス化した時" do
     before do
