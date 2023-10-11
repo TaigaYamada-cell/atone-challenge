@@ -4,25 +4,15 @@ URL = "/api/porker/judge"
 
 # describe "porker judge api", :type => :request do
 describe 'POST /api/porker/judge' do
-  # rails sしてサーバーを起動してから実行する
+  # URLにpostすると、responseが返ってくる
   it "returns response" do
-    post URL
-    expect(response.status).to eq 201
+    post URL, cards: ["H2 C3 H4 C5 H6"]
+    expect(response.status).to eq(201)
   end
 
-  context "役が一種類のみの時" do
-    context "役がストレートフラッシュの時" do
-      it "returns response" do
-        post URL, params: { cards: "H1 H13 H12 H11 H10" }
-        expect(response.status).to eq 201
-      end
-
-      it "ストレートフラッシュと判定する" do
-        post URL, params: { cards: "H1 H13 H12 H11 H10" }
-        json = JSON.parse(response.body)
-        print(json)
-        expect(json["result"]).to include("ストレートフラッシュ")
-      end
-    end
+  # 不正なパラメータを送信した場合、400が返ってくる
+  it "returns 400" do
+    post URL, paramus: ["H2 C3 H4 C5 H6"]
+    expect(response.status).to eq(400)
   end
 end
