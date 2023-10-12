@@ -1,6 +1,6 @@
 class TopController < ApplicationController
   def index
-    @message = "ようこそ"
+    @message = "半角区切りで5枚のカードを入力してください"
     render template:"top/index"
   end
 

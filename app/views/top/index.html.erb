@@ -1,8 +1,8 @@
-<h1>atoneの試練</h1>
+<h1>Porker Hand Checker</h1>
 <%= @message %>
 <%= form_tag('/', method: :post) do %>
-  <%= text_field_tag :porker %>
-  <%= submit_tag "送信" %>
+  <%= text_field_tag :porker, nil, placeholder: "H2 H3 H4 H5 H6", :required => true %>
+  <%= submit_tag "送信", data: { confirm: "役判定しますか？" }%>
 <% end %>
 <% if @hand != nil then %>
   <p><%= @hand %></p>
