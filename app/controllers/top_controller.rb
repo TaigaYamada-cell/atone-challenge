@@ -9,7 +9,7 @@ class TopController < ApplicationController
     begin
       res = JudgeService.new.judge(data)
     rescue => e
-      @message = "エラー！入力されたカード文字列が不正です！"
+      @message = e.message
       render template:"top/error"
       return
     end
