@@ -30,6 +30,12 @@ end
 def best_checker(result)
   result.sort_by!{|d| d[:hand]}
   result[0][:best] = true
+  # result[0]とresultの他の要素が同じ値だった場合、その要素の[:best]をtrueにする
+  for i in 1..result.length-1 do
+    if result[0][:hand] == result[i][:hand]
+      result[i][:best] = true
+    end
+  end
     # resultの各要素の[:hand]を文字列に変換
     for d in result do
       d[:hand] = hand_to_str(d[:hand])
@@ -65,10 +71,8 @@ class API < Grape::API
           end
           # Cardインスタンスを文字列に変換
           cards = hand_card.get_cards
-          cards_str = []
-          for card in cards do 
-            cards_str.push(card.to_s)
-          end
+          # cards_strにCardインスタンスを文字列に変換したものを半角スペース区切りで代入
+          cards_str = cards.join(" ")
           # 配列にhashとしてデータを追加
           result << {card: cards_str, hand: hand_card.get_hand, best: false}
         end
@@ -103,10 +107,7 @@ class API < Grape::API
           return {card: request[0], msg: e.message}
         end
         cards = hand_card.get_cards
-        cards_str = []
-          for card in cards do 
-            cards_str.push(card.to_s)
-          end
+        cards_str = cards.join(" ")
         result << {card: cards_str, hand: hand_to_str(hand_card.get_hand), best: true}
         return {result: result}
       end
