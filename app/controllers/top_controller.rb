@@ -9,7 +9,9 @@ class TopController < ApplicationController
     begin
       res = JudgeService.new.judge(data)
     rescue => e
-      @message = e.message
+      # ちゃんと動くかfeature-develop-apiをマージしてから確認する
+      # @message = e.message
+      @message = @errors
       render template:"top/error"
       return
     end
