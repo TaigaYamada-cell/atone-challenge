@@ -66,7 +66,12 @@ class API < Grape::API
           begin
             hand_card = HandCard.new(d)
           rescue => e
-            error << {card: d, msg: e.message}
+          # errorにe.messageの数だけhashを追加
+          # messagesから"と\と[と]を削除して、,で区切って配列にする
+          messages = e.message.delete("\"\\[]").split(",")
+          messages.each{|msg|
+           error << {card: d, message: msg}
+          }
             next
           end
           # Cardインスタンスを文字列に変換
@@ -82,7 +87,7 @@ class API < Grape::API
         if result.empty?
           return {
             result: result,
-            error: error
+            errors: error
           }
         end
 
@@ -93,7 +98,7 @@ class API < Grape::API
       if error.any?
         return {
           result: result,
-          error: error
+          errors: error
         }
       else
         return {result: result}
@@ -104,7 +109,14 @@ class API < Grape::API
         begin
           hand_card = HandCard.new(request[0])
         rescue => e
-          return {card: request[0], msg: e.message}
+          # errorsにe.messageの数だけhashを追加
+          errors = []
+          # messagesから"と\と[と]を削除して、,で区切って配列にする
+          messages = e.message.delete("\"\\[]").split(",")
+          messages.each{|msg|
+           errors << {card: request[0], message: msg}
+          }
+          return {errors: errors}
         end
         cards = hand_card.get_cards
         cards_str = cards.join(" ")

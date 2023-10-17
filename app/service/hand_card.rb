@@ -2,9 +2,14 @@ require "json"
 
 class HandCard
   def initialize(request)
+    @errors = []
     validate(request)
     
     @cards = create_cards(request)
+    # @errorsがあったらraise ArgumentErrorする
+    if @errors.any?
+      raise ArgumentError, @errors
+    end
     @hand = judge_hand(@cards)
   end
 
@@ -32,23 +37,23 @@ class HandCard
   end
 
   private
-  # 引数のバリデーション。以下の条件を満たさない場合はArgumenErrorをraiseする
+  # 引数のバリデーション。以下の条件を満たさない場合はerrorsに格納する
   def validate(request)
     # 1. 引数が文字列かどうか
     if !(request.is_a?(String))
-      raise ArgumentError, "引数が文字列ではありません"
+      @errors << "引数が文字列ではありません"
     end
     # 2. 全角スペースが含まれていないかどうか
     if request.include?("　")
-      raise ArgumentError, "全角スペースが含まれています"
+      @errors << "全角スペースが含まれています"
     end
     # 3. 引数が5つの要素かどうか
     if !(request.split.length == 5)
-      raise ArgumentError, "引数の要素数が不正です"
+      @errors << "引数の要素数が不正です"
     end
     # 4. カードが重複していないかどうか
     if request.split.uniq.length != 5
-      raise ArgumentError, "カードが重複しています"
+      @errors << "カードが重複しています"
     end
   end
 
@@ -62,7 +67,7 @@ class HandCard
       begin
         card = Card.new(card_str)
       rescue => e
-        raise ArgumentError, "#{i}番目のカード指定文字が不正です。（#{card_str}）"
+        @errors << "#{i}番目のカード指定文字が不正です。（#{card_str}）"
       end
       cards.push(card)
       i += 1
