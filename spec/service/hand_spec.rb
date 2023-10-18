@@ -44,6 +44,40 @@ describe Hand do
         expect(@hand2.judge(@cards2)).to eq Constants::STRAIGHT_FLUSH
       end
     end
+
+    context "10, J, Q, K, Aのストレートフラッシュ" do
+      # 10, J, Q, K, Aのストレートフラッシュ
+      before do
+        card1 = Card.new("C10")
+        card2 = Card.new("C11")
+        card3 = Card.new("C12")
+        card4 = Card.new("C13")
+        card5 = Card.new("C1")
+        @cards1 = [card1, card2, card3, card4, card5]
+        @hand1 = Hand.new(@cards1)
+      end
+
+      it "ストレートフラッシュと判定" do
+        expect(@hand1.judge(@cards1)).to eq Constants::STRAIGHT_FLUSH
+      end
+    end
+
+    context "A, 2, 3, 4, 5のストレートフラッシュ" do
+      # A, 2, 3, 4, 5のストレートフラッシュ
+      before do
+        card1 = Card.new("C2")
+        card2 = Card.new("C3")
+        card3 = Card.new("C4")
+        card4 = Card.new("C5")
+        card5 = Card.new("C1")
+        @cards1 = [card1, card2, card3, card4, card5]
+        @hand1 = Hand.new(@cards1)
+      end
+
+      it "ストレートフラッシュと判定" do
+        expect(@hand1.judge(@cards1)).to eq Constants::STRAIGHT_FLUSH
+      end
+    end
     
     context "フラッシュが成立している手札" do
       before do

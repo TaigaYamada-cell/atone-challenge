@@ -1,18 +1,18 @@
 require_relative "../../app/service/card"
   
 describe Card do
-  # staticメソッドではなくしたので、通らない
-  # todo:calc_relative_valueのテスト方法を修正すること
   it "1以外のときrelative_valueを正しく返すこと" do
-    expect(Card.calc_relative_value(2)).to eq 1
-    expect(Card.calc_relative_value(3)).to eq 2
-    expect(Card.calc_relative_value(4)).to eq 3
-    expect(Card.calc_relative_value(5)).to eq 4
-    expect(Card.calc_relative_value(6)).to eq 5
+    card = Card.new("S2")
+    expect(card.calc_relative_value(2)).to eq 1
+    expect(card.calc_relative_value(3)).to eq 2
+    expect(card.calc_relative_value(4)).to eq 3
+    expect(card.calc_relative_value(5)).to eq 4
+    expect(card.calc_relative_value(6)).to eq 5
   end
 
   it "1のときrelative_valueを正しく返すこと" do
-    expect(Card.calc_relative_value(1)).to eq 13
+    card = Card.new("S2")
+    expect(card.calc_relative_value(1)).to eq 13
   end
 
   context "期待する引数インスタンス化した時" do
