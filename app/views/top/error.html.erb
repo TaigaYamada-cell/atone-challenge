@@ -1,4 +1,7 @@
-<h1><%= @message %></h1>
+<h1>エラー！</h1>
+<% @message.each{|msg| %>
+  <p><%= msg %></p>
+<% } %>
 <%= link_to :back do %>
   <button>戻る</button>
 <% end %>
