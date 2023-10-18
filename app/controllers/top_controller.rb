@@ -1,17 +1,23 @@
 class TopController < ApplicationController
-  protect_from_forgery
-  skip_before_action :verify_authenticity_token
   def index
-    @message = "ようこそ"
+    @message = "半角区切りで5枚のカードを入力してください"
     render template:"top/index"
   end
 
   def judge
     data = params[:porker]
-    # serviceにデータを渡す
+    begin
+      res = JudgeService.new.judge(data)
+    rescue => e
+      # ちゃんと動くかfeature-develop-apiをマージしてから確認する
+      # @message = e.message
+      @message = @errors
+      render template:"top/error"
+      return
+    end
     @message = "結果"
-    hand = JudgeService.new.judge(data)
-    @result = hand_to_str(hand)
+    @hand = hand_to_str(res[0])
+    @cards = res[1]
     render template:"top/index"
   end
 
