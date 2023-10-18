@@ -9,9 +9,9 @@ class TopController < ApplicationController
     begin
       res = JudgeService.new.judge(data)
     rescue => e
-      # ちゃんと動くかfeature-develop-apiをマージしてから確認する
-      # @message = e.message
-      @message = @errors
+      # messageにe.messageを配列に変換してから代入
+      messages = e.message.delete("\"\\[]").split(",")
+      @message = messages
       render template:"top/error"
       return
     end
